@@ -3,32 +3,47 @@ document.addEventListener('DOMContentLoaded', () => {
     let tftCompositions = [
         {
             id: 'kda-ahri',
-            name: 'KDA Ahri 캐리',
+            name: '학살자 벨베스',
             champions: ['Ahri', 'Akali', 'Kaisa', 'Seraphine', 'Evelynn', 'Neeko', 'Lillia', 'Gnar'],
+            mainChampion: 'Ahri',
+            championCost: 4, // 1~5 cost
+            imageUrl: '/16-챔피언/4코/BelVeth_1762915791-BelVeth.jpg',
             votes: 0
         },
         {
             id: 'true-damage-ezreal',
-            name: 'True Damage 이즈리얼',
+            name: '리세라핀',
             champions: ['Ezreal', 'Ekko', 'Senna', 'Yasuo', 'Qiyana', 'Kennen', 'Jax', 'Yone'],
+            mainChampion: 'Ezreal',
+            championCost: 4,
+            imageUrl: '/16-챔피언/4코/Seraphine_1762916313-Seraphine.jpg',
             votes: 0
         },
         {
             id: 'heartsteel-yone',
-            name: 'Heartsteel 요네',
+            name: '9렙 5코 탐켄치',
             champions: ['Yone', 'K\'Sante', 'Sett', 'Aphelios', 'Yorick', 'Kayn', 'Illaoi', 'Tahm Kench'],
+            mainChampion: 'Yone',
+            championCost: 5,
+            imageUrl: '/16-챔피언/5코/TahmKench_1762916854-TahmKench.jpg',
             votes: 0
         },
         {
             id: 'country-samira',
-            name: '컨트리 사미라',
+            name: '아리 리롤',
             champions: ['Samira', 'Urgot', 'Tahm Kench', 'Katarina', 'Sett', 'Vex', 'Amumu', 'Mordekaiser'],
+            mainChampion: 'Samira',
+            championCost: 3,
+            imageUrl: '/16-챔피언/3코/Ahri_1762916349-Ahri.jpg',
             votes: 0
         },
         {
             id: 'disco-blitzcrank',
-            name: '디스코 블리츠크랭크',
+            name: '이쉬탈 바드 리롤',
             champions: ['Blitzcrank', 'Taric', 'Nami', 'Gragas', 'Twisted Fate', 'Lux', 'Fizz', 'Bard'],
+            mainChampion: 'Blitzcrank',
+            championCost: 2,
+            imageUrl: '/16-챔피언/2코/Bard_1762915765-Bard.jpg',
             votes: 0
         }
     ];
@@ -113,15 +128,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             card.innerHTML = `
                 <h3>${comp.name}</h3>
-                <div class="champion-icons">
-                    ${comp.champions.map(champion => `<span class="champion-icon">${champion.substring(0, 3)}</span>`).join('')}
+                <div class="champion-image-container cost-${comp.championCost}">
+                    <div class="hexagon-border">
+                        <img src="${comp.imageUrl}" alt="${comp.mainChampion}" class="champion-main-image" />
+                    </div>
                 </div>
                 <div class="vote-percentage">
                     <span class="percentage-value">${Math.round(votePercentage)}</span>%
                 </div>
                 <div class="composition-actions">
                     <button class="button vote-comp-button" data-comp-id="${comp.id}">👍 "이 조합 재밌다"</button>
-                    <!-- <button class="button star-comp-button" data-comp-id="${comp.id}">⭐ "이번 패치 기준 강함"</button> -->
                 </div>
             `;
             compositionGrid.appendChild(card);
@@ -179,5 +195,3 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCompositionCards(); // Initial render of composition cards
     updateLiveStats(); // Initial call for live stats
 });
-
-

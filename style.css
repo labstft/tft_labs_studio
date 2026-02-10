@@ -349,25 +349,12 @@ section {
     font-size: 1.3em;
     margin-top: var(--spacing-sm);
     margin-bottom: var(--spacing-md);
-}
-
-.composition-card .champion-icons {
+    min-height: 3.6em; /* Fixed height for 2 lines */
     display: flex;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: var(--spacing-md);
-    min-height: 50px; /* Ensure consistent height */
-}
-
-.composition-card .champion-icon {
-    background-color: #3a3a5a;
-    border: 1px solid var(--color-neon-blue);
-    border-radius: 5px;
-    padding: 3px 6px;
-    font-size: 0.8em;
-    color: var(--color-text-light);
-    white-space: nowrap;
+    line-height: 1.4;
+    text-align: center;
 }
 
 .composition-card .vote-percentage {
@@ -393,6 +380,85 @@ section {
     background-color: #555;
     cursor: not-allowed;
     opacity: 0.6;
+}
+
+/* Champion Image Styling with Hexagon Border */
+.composition-card .champion-image-container {
+    width: 100%;
+    height: 200px;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.composition-card .hexagon-border {
+    position: relative;
+    width: 160px;
+    height: 184px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.composition-card .hexagon-border::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: 1;
+}
+
+.composition-card .hexagon-border::after {
+    content: '';
+    position: absolute;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    background: #1a1a2e;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: 2;
+}
+
+.composition-card .champion-main-image {
+    position: relative;
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    object-fit: cover;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    z-index: 3;
+    transition: transform 0.3s ease;
+}
+
+/* Cost-based border colors */
+.composition-card .champion-image-container.cost-1 .hexagon-border::before {
+    background: linear-gradient(135deg, #8B8B8B 0%, #6B6B6B 100%); /* Gray */
+}
+
+.composition-card .champion-image-container.cost-2 .hexagon-border::before {
+    background: linear-gradient(135deg, #1ABC9C 0%, #16A085 100%); /* Green */
+}
+
+.composition-card .champion-image-container.cost-3 .hexagon-border::before {
+    background: linear-gradient(135deg, #3498DB 0%, #2980B9 100%); /* Blue */
+}
+
+.composition-card .champion-image-container.cost-4 .hexagon-border::before {
+    background: linear-gradient(135deg, #9B59B6 0%, #8E44AD 100%); /* Purple */
+}
+
+.composition-card .champion-image-container.cost-5 .hexagon-border::before {
+    background: linear-gradient(135deg, #F1C40F 0%, #F39C12 100%); /* Gold/Yellow */
+}
+
+.composition-card:hover .champion-main-image {
+    transform: scale(1.05);
+}
+
+/* Remove champion icons section */
+.composition-card .champion-icons {
+    display: none;
 }
 
 /* Responsive adjustments */
@@ -439,14 +505,14 @@ section {
   }
   
   .header-right img {
-    width: 38px;
+    width: 45px;
     height: auto;
     object-fit: contain;
   }
   
   /* YouTube만 크게 */
   .header-right .youtube img {
-    width: 57px; /* 👈 여기만 키우면 끝 */
+    width: 67px; /* 👈 여기만 키우면 끝 */
   }
   
   .header-right a:hover img {
@@ -493,7 +559,7 @@ section {
   }
   
   .channel-logo img {
-    width: 60px;        /* 로고 실제 크기 */
+    width: 80px;        /* 로고 실제 크기 */
     height: auto;
     object-fit: contain;
   }
