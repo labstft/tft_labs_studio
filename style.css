@@ -123,8 +123,12 @@ section {
 }
 
 .global-patch-section .container {
+    /* flexbox properties moved to .patch-voting-cards */
+}
+
+.patch-voting-cards {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     gap: var(--spacing-lg);
     flex-wrap: nowrap;
 }
@@ -134,8 +138,10 @@ section {
     border: 1px solid var(--color-purple);
     border-radius: 10px;
     padding: var(--spacing-xl);
-    width: 100%;
-    max-width: calc(50% - var(--spacing-lg) / 2);
+    min-width: 0; /* Allow flex item to shrink below content size */
+    /* width: 100%; */
+    flex-grow: 1; /* Allow card to grow and fill available space */
+    /* max-width: calc(50% - var(--spacing-md) / 2); */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     text-align: center;
     position: relative;
@@ -395,7 +401,7 @@ section {
         justify-content: center;
     }
     .voting-card {
-        max-width: calc(50% - var(--spacing-lg) / 2); /* Adjust for 2 columns on medium screens */
+        /* max-width: calc(50% - var(--spacing-sm) / 2); */ /* Adjust for 2 columns on medium screens */
     }
 }
 
