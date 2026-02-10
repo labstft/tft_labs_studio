@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span class="percentage-value">${Math.round(votePercentage)}</span>%
                 </div>
                 <div class="composition-actions">
-                    <button class="button vote-comp-button" data-comp-id="${comp.id}">👍 "이 조합 재밌다"</button>
+                    <button class="button vote-comp-button" data-comp-id="${comp.id}">👍 "이 조합을 추천!"</button>
                 </div>
             `;
             compositionGrid.appendChild(card);

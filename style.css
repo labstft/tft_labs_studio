@@ -122,6 +122,10 @@ section {
     }
 }
 
+.global-patch-section {
+    padding-bottom: 0; /* 하단 패딩 제거 */
+}
+
 .global-patch-section .container {
     /* flexbox properties moved to .patch-voting-cards */
 }
@@ -235,6 +239,11 @@ section {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     margin-top: var(--spacing-xl);
     text-align: center;
+    padding-top: 0;
+}
+
+.stats-summary-section {
+    padding-top: 0;
 }
 
 .stats-summary-section h2 {
@@ -315,8 +324,14 @@ section {
     text-align: left;
 }
 
+.composition-voting-section {
+    padding-top: 0; /* 위쪽 간격을 두 줄 정도로 조정 */
+    padding-bottom: 0; /* 하단 패딩 제거 */
+}
+
 .composition-voting-section h2 {
     text-align: center;
+    margin-top: 0;
 }
 
 .composition-grid {
