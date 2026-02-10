@@ -416,100 +416,66 @@ section {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjust for 5 columns on very large screens if desired, or keep 4 */
     }
 }
-/* Header layout: centered title + right social icons */
-.header-container {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr; /* left / center / right */
-    align-items: center;
-  }
-  
-  .header-center {
-    text-align: center;
-  }
-  
-  .header-section h1 {
-    margin: 0;
-  }
-  
-  /* Right icons */
-  .header-right {
+
+.header-section .header-container {
     display: flex;
-    justify-content: flex-end;
-    gap: var(--spacing-md);
-  }
-  
-  .header-right img {
-    width: 38px;
-    height: auto;
-    object-fit: contain;
-  }
-  
-  /* YouTube만 크게 */
-  .header-right .youtube img {
-    width: 57px; /* 👈 여기만 키우면 끝 */
-  }
-  
-  .header-right a:hover img {
-    transform: scale(1.15);
-    opacity: 1;
-    filter: drop-shadow(0 0 10px var(--color-neon-blue));
-  }
-  
-  @media (max-width: 768px) {
-    .header-container {
-      grid-template-columns: auto 1fr auto;
-    }
-  
-    .header-right img {
-      width: 22px;
-      height: 22px;
-    }
-  
-    .header-section {
-      padding: var(--spacing-lg) 0;
-    }
-  
-    h1 {
-      font-size: 2.2em;
-    }
-  }
+    justify-content: space-between; /* Distribute items to left, center, right */
+    align-items: center; /* Vertically align items */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    gap: var(--spacing-md); /* Space between sections */
+}
 
-
-  .header-left {
+.header-left, .header-center, .header-right {
     display: flex;
     align-items: center;
-  }
-  
-  .channel-logo {
-    width: 48px;
-    height: 48px;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    border-radius: 12px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .channel-logo img {
-    width: 60px;        /* 로고 실제 크기 */
-    height: auto;
-    object-fit: contain;
-  }
+    /* flex-grow: 1; */ /* Let's not make them grow equally for now, center should be fixed width */
+}
 
-  .channel-logo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 18px rgba(0, 240, 255, 0.35);
-  }
+.header-center {
+    flex-grow: 1; /* Allow center to take up most space */
+    justify-content: center; /* Center the H1 inside its flex container */
+    padding: 0 var(--spacing-md); /* Add some padding to prevent title touching icons */
+}
 
-  @media (max-width: 768px) {
-    .channel-logo {
-      width: 40px;
-      height: 40px;
+.header-left .channel-logo img,
+.header-right .social-link img {
+    height: 40px; /* Adjust as needed for logo/icon size */
+    width: auto;
+    transition: transform 0.2s ease;
+}
+
+.header-right {
+    gap: var(--spacing-sm); /* Space between social icons */
+}
+
+.header-right .social-link:hover img {
+    transform: translateY(-2px);
+}
+
+/* Responsive adjustments for header */
+@media (max-width: 768px) {
+    .header-section .header-container {
+        flex-direction: column; /* Stack header sections vertically */
+        justify-content: center;
+        text-align: center;
     }
-  
-    .channel-logo img {
-      width: 26px;
+    .header-left, .header-center, .header-right {
+        justify-content: center; /* Center content within stacked sections */
+        width: 100%; /* Take full width when stacked */
     }
-  }
+    .header-center {
+        padding: var(--spacing-sm) 0;
+    }
+    .header-left {
+        order: 1; /* Logo first */
+    }
+    .header-center {
+        order: 2; /* Title second */
+    }
+    .header-right {
+        order: 3; /* Social icons third */
+    }
+    .header-section h1 {
+        font-size: 2.5em; /* Smaller title on small screens */
+    }
+}
