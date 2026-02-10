@@ -133,9 +133,9 @@ section {
     background-color: #2a2a4a; /* Darker background for cards */
     border: 1px solid var(--color-purple);
     border-radius: 10px;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-xl);
     width: 100%;
-    max-width: 48%;
+    max-width: calc(50% - var(--spacing-lg) / 2);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     text-align: center;
     position: relative;
@@ -395,7 +395,7 @@ section {
         justify-content: center;
     }
     .voting-card {
-        max-width: 50%; /* Adjust for 2 columns on medium screens */
+        max-width: calc(50% - var(--spacing-lg) / 2); /* Adjust for 2 columns on medium screens */
     }
 }
 
