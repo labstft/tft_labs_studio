@@ -3,12 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
+  <title>TFT Labs Studio</title>
   <link href='/style.css' rel='stylesheet'>
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
+  <header class="header-section">
+    <div class="container">
+      <h1>TFT LABS STUDIO</h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="global-patch-section">
+      <div class="container">
+        <div class="patch-voting-cards">
+          <div class="voting-card">
+            <h3>이번 시즌 어땠나요?</h3>
+            <p class="voting-question">TFT 시즌 전체에 대한 여러분의 의견은?</p>
+            <div class="vote-buttons">
+              <button class="button vote-button-like" data-vote-type="season" data-vote-value="like">👍 좋아요</button>
+              <button class="button vote-button-dislike" data-vote-type="season" data-vote-value="dislike">👎 별로예요</button>
+            </div>
+            <div class="vote-results">
+              <div class="progress-bar">
+                <div class="progress-fill like" style="width: 60%;"></div>
+                <div class="progress-fill dislike" style="width: 40%;"></div>
+              </div>
+              <div class="percentages">
+                <span class="like-percent">60%</span> / <span class="dislike-percent">40%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="voting-card">
+            <h3>이번 패치 버전은?</h3>
+            <p class="voting-question">현재 진행 중인 패치에 대한 여러분의 평가는?</p>
+            <div class="vote-buttons">
+              <button class="button vote-button-like" data-vote-type="patch" data-vote-value="like">👍 좋아요</button>
+              <button class="button vote-button-dislike" data-vote-type="patch" data-vote-value="dislike">👎 별로예요</button>
+            </div>
+            <div class="vote-results">
+              <div class="progress-bar">
+                <div class="progress-fill like" style="width: 75%;"></div>
+                <div class="progress-fill dislike" style="width: 25%;"></div>
+              </div>
+              <div class="percentages">
+                <span class="like-percent">75%</span> / <span class="dislike-percent">25%</span>
+              </div>
+            </div>
+          </div>
+        
+      </div>
+    </section>
+
+    <section class="composition-voting-section">
+      <div class="container">
+        <h2>메인 조합 투표</h2>
+        <div class="composition-grid">
+          <!-- TFT Composition Cards will be dynamically loaded here by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-summary-section">
+      <div class="container">
+        <h2>Live Stats / Summary</h2>
+        <div class="stats-container">
+          <p>총 투표 수: <span id="total-votes">0</span></p>
+          <p>현재 1위 조합: <span id="top-composition">N/A</span></p>
+          <p>트렌드 요약: <span id="trend-summary">N/A</span></p>
+        </div>
+        <button class="button">티어별 투표 결과 보기</button>
+      </div>
+    </section>
+
+    <section class="community-action-section">
+      <div class="container">
+        <h2>Community / Action</h2>
+        <div class="action-buttons">
+          <button class="button">조합 추천하기</button>
+          <button class="button">이 조합 왜 좋음? (토론)</button>
+        </div>
+        <div class="comment-preview">
+          <h3>최신 코멘트</h3>
+          <!-- Comment previews will go here -->
+          <p>...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
   <script defer type="text/javascript" src="/main.js"></script>
 </body>
 </html>
